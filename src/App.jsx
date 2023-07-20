@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import PicsPage from "./pages/PicsPage";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import VotePage from "./pages/Votepage";
+import HomePage from "./components/HomePage";
+import PicsPage from "./components/PicsPage";
+import AboutPage from "./components/AboutPage";
+import ContactPage from "./components/ContactPage";
+import VotePage from "./components/Votepage";
 
 function App() {
   return (

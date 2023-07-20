@@ -1,6 +1,6 @@
-import CardPics from "../components/CardPics";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import CardPics from "./components/CardPics";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 
 function PicsPage() {

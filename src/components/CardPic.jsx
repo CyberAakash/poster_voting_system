@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { motion } from "framer-motion";
 import { Link, } from "react-router-dom";
 
 function CardPic(props) {
@@ -10,7 +11,10 @@ function CardPic(props) {
   }
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity:0, scale:0, x:-200, y:-100 }}
+      whileInView={{ opacity:1, scale:1, x:0, y:0  }}
+      viewport={{ once: true }}
       className="relative flex-col flex items-center 
     w-72 h-[450px] bg-white text-black m-0
     border-2 border-black rounded-2xl"
@@ -37,21 +41,22 @@ function CardPic(props) {
           <p className="text-xs font-medium">{props.desc}</p>
         </div>
         {/* <button className="btn glass">Vote Now</button> */}
-        <Link to="/vote" onClick={() => {
-          storeVoteData(props.cardNo, props.img, props.name)
-        }} className="">
-          <button
-            className="btn bg-greenBlue text-white hover:bg-greenBlue/90"
-          >
+        <Link
+          to="/vote"
+          onClick={() => {
+            storeVoteData(props.cardNo, props.img, props.name);
+          }}
+          className=""
+        >
+          <button className="btn bg-greenBlue text-white hover:bg-greenBlue/90">
             Vote Now
           </button>
-          
         </Link>
       </div>
       <div className="w-full text-xs flex items-center justify-center text-center min-h-3 bg-greenBlue/80 text-white rounded-b-xl">
         Who shot this ?
       </div>
-    </div>
+    </motion.div>
   );
 }
 

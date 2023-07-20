@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
+import {motion} from "framer-motion"
 
 
 function Form() {
@@ -79,39 +80,38 @@ function Form() {
     }
   }, []);
 
-  // useEffect to update card information based on the searched cardNo
-  useEffect(() => {
-    const checkSrch = async () => {
-      // Check if the searchedCardNo is a number
-      if (!isNaN(searchedCardNo) && searchedCardNo !== "") {
-        const searchCardNo = Number(searchedCardNo);
-        // Query the Firestore to find the card with the matching cardNo
-        const querySnapshot = await getDocs(
-          query(cardsCollectionRef, where("cardNo", "==", searchCardNo))
-        );
+  const checkSrch = async (searchedCardNo) => {
+    // Check if the searchedCardNo is a number
+    if (!isNaN(searchedCardNo) && searchedCardNo !== "") {
+      const searchCardNo = Number(searchedCardNo);
+      // Query the Firestore to find the card with the matching cardNo
+      const querySnapshot = await getDocs(
+        query(cardsCollectionRef, where("cardNo", "==", searchCardNo))
+      );
 
-        if (!querySnapshot.empty) {
-          const cardData = querySnapshot.docs[0].data();
-          setCardNo(cardData.cardNo);
-          setImg(cardData.img);
-          setName(cardData.name);
-        } else {
-          // If the card with the searched cardNo is not found, reset the card info
-          // setCardNo(0);
-          // setImg("");
-          // setName("");
-          console.log("Not found")
-        }
+      if (!querySnapshot.empty) {
+        const cardData = querySnapshot.docs[0].data();
+        setCardNo(cardData.cardNo);
+        setImg(cardData.img);
+        setName(cardData.name);
       } else {
-        // If the search input is not a valid number, reset the card info
+        // If the card with the searched cardNo is not found, reset the card info
         // setCardNo(0);
         // setImg("");
         // setName("");
-        console.log("Invalid Number")
+        console.log("Not found");
       }
-    };
-
-    checkSrch();
+    } else {
+      // If the search input is not a valid number, reset the card info
+      // setCardNo(0);
+      // setImg("");
+      // setName("");
+      console.log("Invalid Number");
+    }
+  };
+  // useEffect to update card information based on the searched cardNo
+  useEffect(() => {
+    checkSrch(searchedCardNo);
   }, [searchedCardNo]);
 
   return (
@@ -131,8 +131,18 @@ function Form() {
           onChange={(e) => setSearchedCardNo(e.target.value)}
         />
       </form>
-      <div className="grid gap-4 md:gap-10 p-10 pt-0 place-items-center grid-cols-1 lg:grid-cols-2 w-full min-h-[10rem] max-h-fit ">
-        <form className="flex flex-col items-center justify-start border-2 border-black w-full h-full gap-4 pb-6 lg:pb-0">
+      <div className="scroll-smooth grid gap-4 md:gap-10 p-10 pt-0 place-items-center grid-cols-1 lg:grid-cols-2 w-full min-h-[10rem] max-h-fit ">
+        <motion.form
+          initial={{ opacity: 0, y: -1000, scale: 0 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            // ease: "ease-in-and-out",
+            // duration: 1,
+            // x: { duration: 1 },
+            type: "tween",
+          }}
+          className="flex flex-col items-center justify-start border-2 border-black bg-green-200/10 w-full h-full gap-4 pb-6 lg:pb-0"
+        >
           <h1
             className="p-2 w-full text-center rounded-b-2xl bg-black text-white"
             onChange={(e) => setName(e.target.value)}
@@ -156,10 +166,15 @@ function Form() {
               <input
                 className="rounded-2xl border-b-2 border-black pl-4 p-2 min-w-[150px] text-sm"
                 type="number"
+                name="card-no"
                 min={0}
                 max={100}
                 value={cardNo}
-                onChange={(e) => setCardNo(e.target.value)}
+                // onChange={(e) => setCardNo(e.target.value)}
+                onChange={(e) => {
+                  setCardNo(e.target.value);
+                  checkSrch(e.target.value); // Call search when the cardNo changes
+                }}
               />
             </div>
           </div>
@@ -171,15 +186,25 @@ function Form() {
               Submit
             </button>
           </div>
-        </form>
-        <div className="border-2 border-black w-full overflow-hidden max-h-96">
+        </motion.form>
+        <motion.div
+          initial={{ opacity: 0, y: -1000, scale:0 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            // ease: "ease-in-and-out",
+            // duration: 1,
+            // x: { duration: 1 },
+            type: "tween",
+          }}
+          className="border-2 border-black w-full overflow-hidden max-h-96"
+        >
           <img
             src={img}
-            className="object-cover blur-sm"
+            className="object-cover"
             onChange={(e) => setImg(e.target.value)}
             alt=""
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );

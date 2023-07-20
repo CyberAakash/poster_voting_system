@@ -9,7 +9,7 @@ function VotePage() {
       <Navbar />
       <div className="mt-[30%] sm:mt-[25%] md:mt-[20%] lg:[16%]" />
       <Form />
-      <div className="min-h-screen"/>
+      {/* <div className="min-h-screen"/> */}
       <Footer />
     </div>
   );

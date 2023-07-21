@@ -131,7 +131,7 @@ function Form() {
           onChange={(e) => setSearchedCardNo(e.target.value)}
         />
       </form>
-      <div className="scroll-smooth grid gap-4 md:gap-10 p-10 pt-0 place-items-center grid-cols-1 lg:grid-cols-2 w-full min-h-[10rem] max-h-fit ">
+      <div className="scroll-smooth grid gap-4 md:gap-10 p-10 lg:p-40 pt-0 place-items-center grid-cols-1  w-full min-h-[10rem] max-h-fit ">
         <motion.form
           initial={{ opacity: 0, y: -1000, scale: 0 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -141,7 +141,7 @@ function Form() {
             // x: { duration: 1 },
             type: "tween",
           }}
-          className="flex flex-col items-center justify-start border-2 border-black bg-green-200/10 w-full h-full gap-4 pb-6 lg:pb-0"
+          className="flex flex-col items-center justify-start border-2 border-black bg-green-200/10 w-full h-full gap-4 pb-12 lg:pb-0"
         >
           <h1
             className="p-2 w-full text-center rounded-b-2xl bg-black text-white"
@@ -178,7 +178,7 @@ function Form() {
               />
             </div>
           </div>
-          <div className="flex items-center justify-center w-[90%] border-2 border-black rounded-tl-2xl rounded-br-2xl">
+          <div className="flex mb-0 lg:mb-6 items-center justify-center w-[90%] border-2 border-black rounded-tl-2xl rounded-br-2xl">
             <button
               onClick={(e) => createVote(e)}
               className="w-full bg-white text-black p-2 text-sm font-semibold min-w-96 rounded-tl-2xl rounded-br-2xl"
@@ -196,11 +196,11 @@ function Form() {
             // x: { duration: 1 },
             type: "tween",
           }}
-          className="border-2 border-black w-full overflow-hidden max-h-96"
+          className="border-2 border-black w-full overflow-hidden max-h-fit"
         >
           <img
             src={img}
-            className="object-cover"
+            className="object-contain"
             onChange={(e) => setImg(e.target.value)}
             alt=""
           />

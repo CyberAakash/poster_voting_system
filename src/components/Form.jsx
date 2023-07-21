@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "../firebase";
 import {motion} from "framer-motion"
 
@@ -43,6 +43,15 @@ function Form() {
             await addDoc(votesCollectionRef, {
               admNo: Number(admNo),
               cardNo: Number(cardNo),
+            });
+
+            const cardId = cardSnapshot.docs[0].id;
+            const cardData = cardSnapshot.docs[0].data();
+            const newVoteCount = (cardData.vote_count || 0) + 1;
+            console.log(newVoteCount);
+            const docRef = doc(db, "cards", cardId);
+            await updateDoc(docRef, {
+              vote_count: newVoteCount,
             });
             // Add the voted admission number to the list and save to localStorage
             setVotedAdmNumbers([...votedAdmNumbers, admNo]);

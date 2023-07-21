@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import PicsPage from "./pages/PicsPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
-import VotePage from "./pages/Votepage";
+import VotePage from "./pages/VotePage";
 
 function App() {
   return (

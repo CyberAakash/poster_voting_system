@@ -94,6 +94,7 @@ function Form() {
         setCardNo(cardData.cardNo);
         setImg(cardData.img);
         setName(cardData.name);
+        setSearchedCardNo(cardData.cardNo);
       } else {
         // If the card with the searched cardNo is not found, reset the card info
         // setCardNo(0);

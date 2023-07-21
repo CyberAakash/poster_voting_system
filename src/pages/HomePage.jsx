@@ -2,12 +2,14 @@ import Banner from "../components/Banner";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import TopPics from "../components/TopPics";
 
 function HomePage() {
   return (
     <div className="relative flex-col flex items-center justify-center w-full min-h-screen bg-greenYellow m-0 overflow-hidden">
       <Navbar />
       <Banner />
+      <TopPics />
       <Carousel />
       <div className="mt-10"></div>
       <Footer />

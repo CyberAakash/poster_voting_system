@@ -9,7 +9,7 @@ function ContactPage() {
       <img
         src="/beams.jpg"
         width={1308}
-        className="z-8 max-w-none absolute max-w-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 "
+        className="z-8 max-w-none h-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 "
       />
       <Navbar />
 

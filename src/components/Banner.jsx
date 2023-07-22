@@ -1,21 +1,22 @@
 import "./Banner.css";
-import { HeartIcon } from "@heroicons/react/24/solid";
+// import { HeartIcon } from "@heroicons/react/24/solid";
 
 function Banner() {
   return (
     <div className="z-40 relative flex gap-0 flex-col items-center w-full min-h-screen m-0">
       <h1
-        className="z-30 max-w-[80%] mt-[50%] sm:mt-[30%] lg:mt-[18%] flex flex-col gap-2 items-center justify-center
+        className="relative z-30 w-[80%] mt-[50%] sm:mt-[30%] lg:mt-[18%] flex flex-col gap-2 items-center justify-center
       text-center text-2xl md:text-5xl font-bold text-black"
       >
+        <img src="/heart1.jpeg" alt="" className="object-cover opacity-25 scale-150 h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         Only
-        <span className="text-transparent bg-clip-text bg-gradient-to-tr from-pink-600 via-sky-500 to-green-500 min-h-fit p-2">
+        <span className="text-transparent brightness-125 bg-clip-text bg-gradient-to-tr from-pink-600 via-sky-500 to-green-500 min-h-fit p-2">
           photograph
         </span>
-        what you
-        <span>
+        what you love
+        {/* <span>
           <HeartIcon className="h-16 w-16 animate-pulse text-red-500" />
-        </span>
+        </span> */}
       </h1>
       <div className="flex items-center justify-center w-full min-h-screen m-0">
         <div

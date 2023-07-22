@@ -8,6 +8,7 @@ import VotePage from "./pages/VotePage";
 import { useState, useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
+import Footer from "./components/Footer";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -54,7 +55,7 @@ function App() {
         <Router>
           <div className="relative flex flex-col items-center justify-center w-screen overflow-hidden min-h-fit px-0 py-0 m-0">
             <button
-              className="fixed z-50 bg-black text-white border-2 border-white top-10 left-0 p-2 rounded-r-2xl"
+              className="fixed z-50 bg-black text-white border-2 border-white top-40 lg:top-10 left-0 p-2 rounded-r-2xl"
               onClick={handleLogout}
             >
               Logout
@@ -71,13 +72,13 @@ function App() {
           </div>
         </Router>
       ) : (
-        <div className="relative flex flex-col gap-16 items-center justify-center m-0 p-10 lg:p-40 min-h-screen w-screen overflow-hidden shadow-2xl ">
-          <h1 className="z-40 text-2xl text-black font-semibold">
-            <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-blue-400 to-green-400">
+        <div className="relative flex flex-col gap-16 items-center justify-center m-0 p-0 sm:p-10 lg:px-40 h-screen w-screen overflow-hidden shadow-2xl ">
+          <h1 className="z-40 text-base sm:text-2xl text-black font-semibold">
+            <span className="text-lg sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-blue-400 to-green-400">
               Why
             </span>{" "}
             don{"'"}t you just{" "}
-            <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-blue-400 to-green-400">
+            <span className="text-lg sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-blue-400 to-green-400">
               LOGIN
             </span>{" "}
             already
@@ -109,6 +110,7 @@ function App() {
               Login
             </button>
           </form>
+          <Footer />
         </div>
       )}
     </>

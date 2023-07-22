@@ -6,9 +6,9 @@ function Footer() {
       <h1 className=" scale-75">Made with </h1>
       <HeartIcon className="h-6 w-6 text-red-500 scale-75" />
       <h1 className=" scale-75"> by</h1>
-      <p className="text-transparent bg-gradient-to-r from-green-500 to-green-300 bg-clip-text scale-75">
+      <a href="https://www.github.com/CyberAakash" target="_blank" className="text-transparent bg-gradient-to-r from-green-500 to-green-300 bg-clip-text scale-75" rel="noreferrer">
         CyberAakash
-      </p>
+      </a>
     </div>
   );
 }

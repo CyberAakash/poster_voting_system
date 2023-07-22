@@ -5,7 +5,7 @@ function Banner() {
   return (
     <div className="z-40 relative flex gap-0 flex-col items-center w-full min-h-screen m-0">
       <h1
-        className="z-30 w-full mt-[18%] flex gap-2 items-center justify-center
+        className="z-30 max-w-[80%] mt-[50%] sm:mt-[30%] lg:mt-[18%] flex flex-col gap-2 items-center justify-center
       text-center text-2xl md:text-5xl font-bold text-black"
       >
         Only

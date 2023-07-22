@@ -125,7 +125,7 @@ function Form() {
   }, [searchedCardNo]);
 
   return (
-    <div className="relative flex flex-col w-full min-h-fit overflow-hidden items-center justify-center gap-6">
+    <div className="relative z-40 flex flex-col w-full min-h-fit overflow-hidden items-center justify-center gap-2">
       <form
         className="flex flex-row items-center justify-center gap-0 text-black bg-transparent mb-4"
         onSubmit={(e) => e.preventDefault()}
@@ -141,7 +141,7 @@ function Form() {
           onChange={(e) => setSearchedCardNo(e.target.value)}
         />
       </form>
-      <div className="scroll-smooth grid gap-4 md:gap-10 p-10 lg:p-40 pt-0 place-items-center grid-cols-1  w-full min-h-[10rem] max-h-fit ">
+      <div className="scroll-smooth grid gap-4 md:gap-10 px-10 lg:px-40 pt-0 place-items-center grid-cols-1  w-full min-h-[10rem] max-h-fit ">
         <motion.form
           initial={{ opacity: 0, y: -1000, scale: 0 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}

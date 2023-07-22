@@ -22,8 +22,8 @@ function CardPics() {
     getCards()
   }, []);
   return (
-    <div className="relative grid place-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 w-full 
-    min-h-screen bg-greenYellow m-0 p-8 overflow-hidden pb-14">
+    <div className="relative z-40 grid place-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 w-full 
+    min-h-screen m-0 p-8 overflow-hidden pb-14">
         { cards.map((card, i) => (
             <CardPic key={i} id={card.id} name={card.name} desc={card.desc} img={card.img} cardNo={card.cardNo} author={card.author} />
         ))

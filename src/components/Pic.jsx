@@ -1,5 +1,6 @@
 import "./Pic.css"
 
+// eslint-disable-next-line react/prop-types
 function Pic({name, author, desc, img, vote_count, cardNo}) {
   return (
     <div className="relative flex flex-row rounded-2xl items-start justify-start min-h-[13rem] min-w-[20rem] bg-white text-black border-2 border-black">

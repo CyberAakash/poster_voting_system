@@ -29,10 +29,10 @@ function TopPics() {
 
   return (
     <div
-      className="relative grid place-items-center grid-cols-1 gap-16 w-full 
-    min-h-screen bg-green-300/10 m-0 p-8 md:px-36 lg:px-60 overflow-x-hidden pb-14"
+      className="relative z-40 grid place-items-center grid-cols-1 gap-16 w-full 
+    min-h-screen m-0 p-8 md:px-36 lg:px-60 overflow-x-hidden pb-14"
     >
-      <h1 className="text-5xl font-extrabold border-2 border-black p-4">
+      <h1 className="text-5xl font-extrabold border-2 border-black bg-white p-4">
         Top rankers
       </h1>
       {cards.map((card) => (

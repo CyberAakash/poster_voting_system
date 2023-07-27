@@ -86,21 +86,21 @@ function App() {
           <div className="z-10 mix-blend-multiply absolute bg-[url(/gridsm.jpg)] bg-repeat bg-blend-lighten bg-center [mask-image:linear-gradient(180deg, white,rgba(255,255,255,0))] inset-0"></div>
           <img
             src="/beams.jpg"
-            className="z-8 w-full h-full absolute max-w-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 "
+            className="z-8 w-full h-full absolute max-w-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           ></img>
           <form
             onSubmit={handleLogin}
-            className="z-40 bg-white w-[20rem] h-[20rem] p-10 flex flex-col items-center justify-center gap-6 overflow-hidden border border-black"
+            className="z-40 bg-white w-[20rem] h-[20rem] p-10 flex flex-col items-center justify-center gap-6 overflow-hidden shadow-2xl"
           >
             <input
-              className="border border-black p-2"
+              className="border border-black p-2  focus:outline-none"
               type="text"
               placeholder="Enter Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <input
-              className="border border-black p-2"
+              className="border border-black p-2focus:outline-none"
               type="password"
               placeholder="Enter Password"
               value={password}

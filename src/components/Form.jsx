@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { addDoc, collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "../firebase";
 import {motion} from "framer-motion"
+import {MagnifyingGlassIcon} from "@heroicons/react/24/outline"
 
 
 function Form() {
@@ -124,24 +125,27 @@ function Form() {
     checkSrch(searchedCardNo);
   }, [searchedCardNo]);
 
+
+  // const gradient = "linear-gradient(45deg,pink,blue,green,yellow)";
+
   return (
-    <div className="relative z-40 flex flex-col w-full min-h-fit overflow-hidden items-center justify-center gap-2">
+    <div className="relative z-40 flex flex-col  w-full min-h-fit overflow-hidden items-center justify-center gap-2 pb-20">
       <form
-        className="flex flex-row items-center justify-center gap-0 text-black bg-transparent mb-4"
+        className="flex flex-row items-center justify-center gap-0 text-black bg-transparent mb-12"
         onSubmit={(e) => e.preventDefault()}
       >
-        <label className="text-lg p-[6px] bg-black text-white rounded-l-2xl">
-          Search
+        <label className="text-lg p-[6px] bg-white text-black border-l-2 border-y-2 border-black rounded-l-2xl">
+          <MagnifyingGlassIcon className="h-6 w-6" />
         </label>
         <input
           // name="srchNo"
           type="number"
-          className="border-2 border-black p-2 max-w-xs text-sm rounded-r-2xl"
+          className="border-y-2 border-r-2 border-black p-2 max-w-xs text-sm rounded-r-2xl focus:outline-none"
           value={searchedCardNo}
           onChange={(e) => setSearchedCardNo(e.target.value)}
         />
       </form>
-      <div className="scroll-smooth grid gap-4 md:gap-10 px-10 lg:px-40 pt-0 place-items-center grid-cols-1  w-full min-h-[10rem] max-h-fit ">
+      <div className="relative gap-4 md:gap-10 px-10 lg:px-40 pt-0 grid place-items-center grid-cols-1 md:grid-cols-2 w-full h-full">
         <motion.form
           initial={{ opacity: 0, y: -1000, scale: 0 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -151,19 +155,26 @@ function Form() {
             // x: { duration: 1 },
             type: "tween",
           }}
-          className="flex flex-col items-center justify-start border-2 border-black bg-green-200/10 w-full h-full gap-4 pb-12 lg:pb-0"
+          className=" relative flex flex-col items-center justify-start bg-transparent shadow-2xl w-full h-full gap-4 pb-12 lg:pb-0 overflow-hidden col-span-2 md:col-span-1"
         >
+          <img
+            src="/beams.jpg"
+            width={1308}
+            className="z-8 max-w-none h-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />
           <h1
-            className="p-2 w-full text-center rounded-b-2xl bg-black text-white"
+            className="z-10 p-2 pt-6  w-full text-center text-xl font-extrabold border-b"
             onChange={(e) => setName(e.target.value)}
           >
             Vote for {name}
           </h1>
-          <div className="w-full flex flex-col items-center justify-center gap-6 py-6 text-sm sm:text-lg">
-            <div className="w-[90%] grid grid-cols-2 lg:grid-cols-1 md:gap-4 place-items-center">
-              <label className="">Admission Number</label>
+          <div className="z-10 w-full flex flex-col items-center justify-center gap-6 py-6 ">
+            <div className="z-10 w-[90%] grid grid-cols-2 lg:grid-cols-1 md:gap-4 place-items-center">
+              <label className="col-span-1 text-sm sm:text-base lg:text-lg">
+                Admission Number
+              </label>
               <input
-                className="rounded-2xl border-b-2 border-black pl-4 p-2 min-w-[150px] text-sm"
+                className="rounded-md shadow-2xl pl-4 p-2 min-w-full text-sm focus:outline-none"
                 type="number"
                 min={16000}
                 max={18000}
@@ -171,10 +182,12 @@ function Form() {
                 onChange={(e) => setAdmNo(e.target.value)}
               />
             </div>
-            <div className="w-[90%] grid grid-cols-2 lg:grid-cols-1 md:gap-4 place-items-center">
-              <label className="">Photo Number</label>
+            <div className=" z-10 w-[90%] grid grid-cols-2 lg:grid-cols-1 md:gap-4 place-items-center">
+              <label className="col-span-1 text-sm sm:text-base lg:text-lg">
+                Photo Number
+              </label>
               <input
-                className="rounded-2xl border-b-2 border-black pl-4 p-2 min-w-[150px] text-sm"
+                className="rounded-md shadow-2xl pl-4 p-2 min-w-full text-sm focus:outline-none"
                 type="number"
                 name="card-no"
                 min={0}
@@ -188,17 +201,19 @@ function Form() {
               />
             </div>
           </div>
-          <div className="flex mb-0 lg:mb-6 items-center justify-center w-[90%] border-2 border-black rounded-tl-2xl rounded-br-2xl">
+          <div
+            className={`z-10 relative flex mb-0 lg:mb-6 items-center justify-center w-[80%] h-12 p-1 bg-gradient-to-br from-pink-500 via-sky-500 to-green-400 rounded-md`}
+          >
             <button
               onClick={(e) => createVote(e)}
-              className="w-full bg-white text-black p-2 text-sm font-semibold min-w-96 rounded-tl-2xl rounded-br-2xl"
+              className={`h-full w-full p-2 bg-white text-black text-sm font-semibold min-w-96 rounded-md`}
             >
               Submit
             </button>
           </div>
         </motion.form>
         <motion.div
-          initial={{ opacity: 0, y: -1000, scale:0 }}
+          initial={{ opacity: 0, y: -1000, scale: 0 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{
             // ease: "ease-in-and-out",
@@ -206,7 +221,7 @@ function Form() {
             // x: { duration: 1 },
             type: "tween",
           }}
-          className="border-2 border-black w-full overflow-hidden max-h-fit"
+          className="shadow-2xl w-full overflow-hidden max-h-fit"
         >
           <img
             src={img}

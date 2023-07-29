@@ -100,7 +100,7 @@ function App() {
               onChange={(e) => setUsername(e.target.value)}
             />
             <input
-              className="border border-black p-2focus:outline-none"
+              className="border border-black p-2 focus:outline-none"
               type="password"
               placeholder="Enter Password"
               value={password}
